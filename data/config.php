@@ -1,6 +1,6 @@
 <?php
 return [
-    'cacheTimestamp' => 1595401767,
+    'cacheTimestamp' => 1595405739,
     'database' => [
         'driver' => 'pdo_mysql',
         'host' => 'localhost',
@@ -202,7 +202,7 @@ return [
     'personNameFormat' => 'firstLast',
     'newNotificationCountInTitle' => false,
     'isInstalled' => true,
-    'microtime' => 1595401766.957595,
+    'microtime' => 1595405739.28113,
     'siteUrl' => 'http://localhost:8080/qlkh',
     'passwordSalt' => '24bd34bbc5bd7863',
     'cryptKey' => '39a9763e01ddf4ab87bfaa04e3d2ce88',

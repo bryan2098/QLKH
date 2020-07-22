@@ -76,6 +76,39 @@
         }
     },
     {
+        "route": "User/Login",
+        "method": "post",
+        "params": {
+            "controller": "User",
+            "action": "Login"
+        },
+        "conditions": {
+            "auth": false
+        }
+    },
+    {
+        "route": "User/Decode",
+        "method": "post",
+        "params": {
+            "controller": "User",
+            "action": "Decode"
+        },
+        "conditions": {
+            "auth": false
+        }
+    },
+    {
+        "route": "User/GenerateKeyUser",
+        "method": "get",
+        "params": {
+            "controller": "User",
+            "action": "GenerateKeyUser"
+        },
+        "conditions": {
+            "auth": false
+        }
+    },
+    {
         "route": "/Stream",
         "method": "get",
         "params": {
