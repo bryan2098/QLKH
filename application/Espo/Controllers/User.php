@@ -33,6 +33,8 @@ use \Espo\Core\Exceptions\Error;
 use \Espo\Core\Exceptions\NotFound;
 use \Espo\Core\Exceptions\Forbidden;
 use \Espo\Core\Exceptions\BadRequest;
+use PDOException;
+use stdClass;
 
 class User extends \Espo\Core\Controllers\Record
 {

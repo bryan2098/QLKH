@@ -491,7 +491,33 @@ define(
         initAuth: function () {
             this.auth = this.storage.get('user', 'auth') || null;
 
+            const url = new URL(window.location.href);
+            const request = url.searchParams.get("request");
+
+            if(request && request !== 'logout' && this.auth)
+            {
+                $.ajax({
+                    url: 'User/Decode',
+                    type: 'POST',
+                    data: JSON.stringify(request),
+                    success: (data) => { 
+                        if(data)
+                        {
+                            const dataDecode = Base64.decode(this.auth || '');
+                            if(dataDecode)
+                            {
+                                const arr_auth = dataDecode.split(":");
+                                if(arr_auth[0] !== data.result)
+                                    this.logout();
+                            }
+                        }
+                    }
+                });
+            }
+
+
             this.baseController.on('login', function (data) {
+
                 this.auth = Base64.encode(data.auth.userName  + ':' + data.auth.token);
                 this.storage.set('user', 'auth', this.auth);
 
@@ -500,12 +526,19 @@ define(
                 this.initUserData(data, function () {
                     this.trigger('auth');
                 }.bind(this));
-
             }.bind(this));
 
-            this.baseController.on('logout', function () {
+
+            
+
+            // this.baseController.on('logout', function () {
+            //     this.logout();
+            // }.bind(this));
+
+            if(request === 'logout') {
                 this.logout();
-            }.bind(this));
+                window.location.replace("/CRM");
+            }
         },
 
         logout: function () {
