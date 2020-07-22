@@ -1108,6 +1108,9 @@ class Record extends \Espo\Core\Services\Base
 
         $selectParams['maxTextColumnsLength'] = $this->getMaxSelectTextAttributeLength();
 
+        if($this->getUser()->get('name') != 'admin')
+            $selectParams['whereClause'] = ['createdById' => $this->getUser()->id];
+
         $selectAttributeList = $this->getSelectAttributeList($params);
         if ($selectAttributeList) {
             $selectParams['select'] = $selectAttributeList;
